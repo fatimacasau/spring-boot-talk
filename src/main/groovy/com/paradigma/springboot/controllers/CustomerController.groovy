@@ -13,14 +13,13 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class CustomerController {
-    
+
     @Autowired
     CustomerRepository customerRepository;
-    
+
     @RequestMapping("/mycustomers/{id}")
-    public
     @ResponseBody
-    Customer reverse(@PathVariable Long id) {
+    public Customer reverse(@PathVariable Long id) {
         return customerRepository.findOne(id);
     }
 }
