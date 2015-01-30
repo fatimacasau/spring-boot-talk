@@ -18,17 +18,17 @@ class CustomerSpec extends Specification {
     CustomerRepository customerRepository
 
     @Unroll
-    void "add new Customer with params #params"(){
+    void "add new Customer with params #params? result: #result"(){
         expect: "result when save new object with diferent params"
             try {
-                result == !customerRepository.save(new Customer(params))
+                result == (customerRepository.save(new Customer(params)) != null)
             }catch (Exception e){
                 result = null
             }
         where: "params are...result is..."
             result || params
-            false   || [firstName:'first', lastName:'last']
-            true    || [:]
+            true   || [firstName:'first', lastName:'last']
+            false  || [:]
     }
 
 }
