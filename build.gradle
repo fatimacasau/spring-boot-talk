@@ -32,11 +32,13 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-data-jpa")
     compile("com.h2database:h2")
     compile "org.codehaus.groovy:groovy-all:2.2.0"
-    testCompile("org.spockframework:spock-core:0.7-groovy-2.0") {
-        exclude group: 'org.codehaus.groovy', module: 'groovy-all'
-    }
+    testCompile("org.springframework.boot:spring-boot-starter-test")
+    testCompile("org.springframework:spring-test")
     testRuntime("org.spockframework:spock-spring:0.7-groovy-2.0") {
         exclude group: 'org.spockframework', module: 'spock-core'
+    }
+    testCompile("org.spockframework:spock-core:0.7-groovy-2.0") {
+        exclude group: 'org.codehaus.groovy', module: 'groovy-all'
     }
 }
 
