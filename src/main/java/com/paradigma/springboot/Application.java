@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import java.util.List;
 
@@ -14,6 +15,7 @@ import java.util.List;
  * Created by fcasau on 1/28/15.
  */
 @Configuration
+@EnableJpaRepositories
 @EnableAutoConfiguration
 @ComponentScan
 public class Application {
