@@ -11,13 +11,19 @@ import static org.springframework.web.bind.annotation.RequestMethod.*
 @RestController
 public class CustomerController {
 
-    @RequestMapping("/mycustomers/{id}")
+    @RequestMapping("/customer/{id}")
     @ResponseBody
     public Customer reverse(@PathVariable Long id) {
         return Customer.get(id)
     }
+    
+    @RequestMapping(value="/customerByName", method = GET)
+    String greet(String firstName) {
+        def p = Customer.findByFirstName(firstName)
+        return p ? "Hello ${p.firstName}!" : "Person not found"
+    }
 
-    @RequestMapping(value = '/person/add', method = POST)
+    @RequestMapping(value = '/customer/add', method = POST)
     ResponseEntity addPerson(String firstName, String lastName) {
         Customer.withTransaction {
             def p = new Customer(firstName: firstName, lastName: lastName).save()
