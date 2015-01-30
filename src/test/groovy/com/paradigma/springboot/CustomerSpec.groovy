@@ -15,13 +15,13 @@ class CustomerSpec extends Specification {
 
 
     @Unroll
-    void "add new Customer with params #params"(){
+    void "add new Customer with params #params is valid? result: #result"(){
         expect: "result when save new object with diferent params"
-            result == !new Customer(params).save(flush: true)
+            result == new Customer(params).validate()
         where: "params are...result is..."
             result || params
-            false   || [firstName:'first', lastName:'last']
-            true    || [:]
+            true   || [firstName:'first', lastName:'last']
+            false  || [:]
     }
 
 }
